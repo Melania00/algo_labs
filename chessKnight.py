@@ -1,4 +1,4 @@
-from collections import deque
+from collections import deque # юзаю шоб мати оптимізований доступ до нікцевих полів
 
 
 class ChessKnight:
