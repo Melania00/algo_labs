@@ -6,7 +6,7 @@ def main():
         start_x, start_y = map(int, file.readline().strip().split(", "))
         end_x, end_y = map(int, file.readline().strip().split(", "))
 
-    chess_knight = ChessKnight(n)
+    chess_knight = ChessKnight(board_size)
     shortest_path = chess_knight.shortest_distance((start_x, start_y), (end_x, end_y))
     print("Shortest distance:", shortest_path)
 
