@@ -2,7 +2,7 @@ from chessKnight import ChessKnight
 
 def main():
     with open("input.txt", "r") as file:
-        n = int(file.readline())
+        board_size = int(file.readline())
         start_x, start_y = map(int, file.readline().strip().split(", "))
         end_x, end_y = map(int, file.readline().strip().split(", "))
 
