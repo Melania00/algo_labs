@@ -15,27 +15,27 @@ class TestKMP(unittest.TestCase):
         # Test cases for search function
         haystack1 = "ABABDABACDABABCABAB"
         needle1 = "ABABCABAB"
-        self.assertEqual(self.kmp.search(needle1, haystack1), [10])
+        self.assertEqual(self.kmp.search_all(needle1, haystack1), [10])
 
         haystack2 = "AABAACAADAABAABA"
         needle2 = "AABA"
-        self.assertEqual(self.kmp.search(needle2, haystack2), [0, 9, 12])
+        self.assertEqual(self.kmp.search_all(needle2, haystack2), [0, 9, 12])
 
         haystack3 = "ABCDEF"
         needle3 = "XY"
-        self.assertEqual(self.kmp.search(needle3, haystack3), [])
+        self.assertEqual(self.kmp.search_all(needle3, haystack3), [])
 
         haystack4 = "AAAAA"
         needle4 = "AA"
-        self.assertEqual(self.kmp.search(needle4, haystack4), [0, 1, 2, 3])
+        self.assertEqual(self.kmp.search_all(needle4, haystack4), [0, 1, 2, 3])
 
     def test_empty_input(self):
         # Test cases for empty input
         haystack = "ABCD"
         needle = ""
-        self.assertEqual(self.kmp.search(needle, haystack), [])
-        self.assertEqual(self.kmp.search("A", ""), [])
-        self.assertEqual(self.kmp.search("", ""), [])
+        self.assertEqual(self.kmp.search_all(needle, haystack), [])
+        self.assertEqual(self.kmp.search_all("A", ""), [])
+        self.assertEqual(self.kmp.search_all("", ""), [])
 
 
 if __name__ == "__main__":
