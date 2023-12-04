@@ -1,4 +1,4 @@
-
+from beers import Beer
 from chessKnight import ChessKnight
 
 def main():
@@ -17,19 +17,22 @@ if __name__ == '__main__':
 from binaryTree import BinaryTree, binary_tree_diameter
 
 def main():
-    root = BinaryTree(1)
-    root.left = BinaryTree(3)
-    root.right = BinaryTree(2)
-    root.left.left = BinaryTree(7)
-    root.left.right = BinaryTree(4)
-    root.left.left.left = BinaryTree(8)
-    root.left.left.left.left = BinaryTree(9)
-    root.left.left.right = BinaryTree(5)
-    root.left.left.right.left = BinaryTree(6)
+    employees = {
+        1: [1],
+        2: [1, 4],
+        3: [1],
+        4: [1, 2, 4],
+        5: [1, 2],
+        6: [2],
+        7: [1, 2, 3],
+        8: [2, 3, 4],
+        9: [3, 4],
+        10: [3, 4]
+    }
 
-    diameter = binary_tree_diameter(root)
-    print("Maximum Diameter:", diameter)
+    beer_manager = Beer(employees)
+    beer_manager.run_algorithm()
+
 
 if __name__ == "__main__":
-
     main()
