@@ -13,23 +13,27 @@ class KMP:
 
         return prefix_arr
 
-    def search(self, pattern, text):
+    def search_all(self, pattern, text):
         if not pattern or not text:
-            return []
+            return 0
 
         prefix = self.compute_prefix_array(pattern)
         matches = []
         j = 0
 
-        for i in range(len(text)):
-            while j > 0 and text[i] != pattern[j]:
-                j = prefix[j - 1]
-
+        i = 0
+        while i < len(text):
             if text[i] == pattern[j]:
+                i += 1
                 j += 1
 
-            if j == len(pattern):
-                matches.append(i - j + 1)
-                j = prefix[j - 1]
+                if j == len(pattern):
+                    matches.append(i - j)
+                    j = prefix[j - 1]
+            else:
+                if j != 0:
+                    j = prefix[j - 1]
+                else:
+                    i += 1
 
         return matches
