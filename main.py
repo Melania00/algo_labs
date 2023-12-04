@@ -1,37 +1,22 @@
-from beers import Beer
-from chessKnight import ChessKnight
+from kmp import KMP
+
 
 def main():
-    with open("input.txt", "r") as file:
-        board_size = int(file.readline())
-        start_x, start_y = map(int, file.readline().strip().split(", "))
-        end_x, end_y = map(int, file.readline().strip().split(", "))
+    kmp = KMP()
+    haystack = input("Enter the haystack: ")
+    needle = input("Enter the needle to search for: ")
 
-    chess_knight = ChessKnight(board_size)
-    shortest_path = chess_knight.shortest_distance((start_x, start_y), (end_x, end_y))
-    print("Shortest distance:", shortest_path)
+    indices = kmp.search_all(needle, haystack)
 
+    if indices:
+        lps = []
+        for index in indices:
+            new_indices = [i for i in range(index, index + len(needle)) if i not in lps]
+            lps.extend(new_indices)
 
-if __name__ == '__main__':
-
-from binaryTree import BinaryTree, binary_tree_diameter
-
-def main():
-    employees = {
-        1: [1],
-        2: [1, 4],
-        3: [1],
-        4: [1, 2, 4],
-        5: [1, 2],
-        6: [2],
-        7: [1, 2, 3],
-        8: [2, 3, 4],
-        9: [3, 4],
-        10: [3, 4]
-    }
-
-    beer_manager = Beer(employees)
-    beer_manager.run_algorithm()
+        print(f"LPS array containing matched character indices: {lps}")
+    else:
+        print("The needle was not found in the haystack.")
 
 
 if __name__ == "__main__":
